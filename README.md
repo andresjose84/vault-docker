@@ -14,7 +14,7 @@ docker compose up -d
 
 ## Documentation / Documentacion
 
-### Espanol
+### Español
 
 - [Guia post-despliegue](./GUIA-POST-DESPLIEGUE.md)
 - [Guia MFA TOTP](./GUIA-MFA-TOTP.md)
