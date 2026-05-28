@@ -1,0 +1,37 @@
+# HashiCorp Vault — despliegue local en macOS (Apple Silicon / Intel)
+# Uso: docker compose up -d
+
+services:
+  vault:
+    image: hashicorp/vault:latest
+    container_name: vault
+    hostname: vault
+    restart: unless-stopped
+    cap_add:
+      # Permite bloquear memoria sensible (mlock); recomendado para Vault
+      - IPC_LOCK
+    ports:
+      # Si 8200 está ocupado: VAULT_HOST_PORT=8201 docker compose up -d
+      - "${VAULT_HOST_PORT:-8200}:8200"
+    volumes:
+      # Persistencia de datos y configuración en el host
+      - ./vault/data:/vault/data
+      - ./config/vault.hcl:/vault/config/vault.hcl:ro
+    environment:
+      VAULT_ADDR: http://127.0.0.1:8200
+      SKIP_SETCAP: "true"
+    # Evita docker-entrypoint.sh, que inyecta -dev-listen-address=:8200 y choca con vault.hcl
+    entrypoint: ["/usr/bin/dumb-init", "--", "vault"]
+    command: ["server", "-config=/vault/config/vault.hcl"]
+    networks:
+      - vault-net
+    healthcheck:
+      test: ["CMD", "vault", "status", "-format=json"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+networks:
+  vault-net:
+    driver: bridge

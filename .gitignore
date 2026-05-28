@@ -1,0 +1,12 @@
+# Datos persistentes de Vault (nunca versionar)
+vault/data/*
+!vault/data/.gitkeep
+
+# Credenciales generadas en init
+vault/init-keys.json
+vault/CREDENCIALES.local.md
+vault/*-totp-qr.png
+*.unseal
+.env
+.env.*
+PROMPT.md
