@@ -7,7 +7,7 @@ Local **HashiCorp Vault** deployment on Docker for macOS (Apple Silicon / Intel)
 ## Quick Start / Inicio rapido
 
 ```bash
-docker compose up -d
+VAULT_HOST_PORT=8201 docker compose up -d
 # ES: sigue GUIA-POST-DESPLIEGUE.md (init, unseal) y luego ./scripts/configure-mfa-totp.sh
 # EN: follow GUIDE-POST-DEPLOYMENT.md (init, unseal) then ./scripts/configure-mfa-totp.sh
 ```
@@ -28,7 +28,7 @@ docker compose up -d
 
 | File / archivo | Description / descripcion |
 |----------------|---------------------------|
-| `docker-compose.yml` | Vault service, volumes, `IPC_LOCK`, port 8200 |
+| `docker-compose.yml` | Vault service, volumes, `IPC_LOCK`, host port 8201 -> container 8200 |
 | `config/vault.hcl` | File storage, TCP listener, UI, TLS disabled (dev only) |
 | `vault/data/` | Persistent server data |
 | `GUIA-POST-DESPLIEGUE.md` | Post-deployment guide in Spanish |

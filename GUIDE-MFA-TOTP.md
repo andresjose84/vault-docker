@@ -7,7 +7,7 @@ Vault **Community** >= 1.10 supports **Login MFA** with TOTP (Google Authenticat
 With Vault **initialized, unsealed**, and `VAULT_TOKEN` (root) exported:
 
 ```bash
-export VAULT_ADDR='http://127.0.0.1:8200'
+export VAULT_ADDR='http://127.0.0.1:8201'
 export VAULT_TOKEN=$(jq -r '.root_token' vault/init-keys.json)
 
 # Optional variables
@@ -146,7 +146,7 @@ docker exec -e VAULT_TOKEN="$VAULT_TOKEN" vault vault write \
 ### Interactive CLI (two phases: prompts for TOTP code)
 
 ```bash
-export VAULT_ADDR='http://127.0.0.1:8200'
+export VAULT_ADDR='http://127.0.0.1:8201'
 docker exec -it -e VAULT_ADDR vault vault login -method=userpass username=operador
 # Enter password and then the 6-digit code from your app
 ```
@@ -163,7 +163,7 @@ docker exec -it -e VAULT_ADDR vault vault login -method=userpass \
 
 ### Web UI
 
-1. Open [http://127.0.0.1:8200](http://127.0.0.1:8200)
+1. Open [http://127.0.0.1:8201](http://127.0.0.1:8201)
 2. Method: **Username**
 3. User: `operador` / configured password
 4. Enter TOTP code when prompted

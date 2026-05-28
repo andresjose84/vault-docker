@@ -18,7 +18,7 @@ cd /Users/ajsm/Developer/GitHub/vault-docker
 mkdir -p vault/data
 
 # Start Vault in the background
-docker compose up -d
+VAULT_HOST_PORT=8201 docker compose up -d
 
 # Verify the container is running
 docker compose ps
@@ -30,10 +30,10 @@ docker compose logs -f vault
 Export the server address (useful for local CLI or scripts):
 
 ```bash
-export VAULT_ADDR='http://127.0.0.1:8200'
+export VAULT_ADDR='http://127.0.0.1:8201'
 ```
 
-Open the UI in your browser: [http://127.0.0.1:8200](http://127.0.0.1:8200)
+Open the UI in your browser: [http://127.0.0.1:8201](http://127.0.0.1:8201)
 
 ---
 
