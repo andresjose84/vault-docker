@@ -10,3 +10,4 @@ vault/*-totp-qr.png
 .env
 .env.*
 PROMPT.md
+.DS_Store

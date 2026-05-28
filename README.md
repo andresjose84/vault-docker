@@ -1,5 +1,9 @@
 # vault-docker
 
+<p align="center">
+  <img src="./img/hashicorp-vault_logo.png" alt="HashiCorp Vault logo" style="max-width: 260px; width: 100%; height: auto;">
+</p>
+
 Despliegue local de **HashiCorp Vault** en Docker para macOS (Apple Silicon / Intel), con persistencia, UI web y **Login MFA TOTP**.
 
 Local **HashiCorp Vault** deployment on Docker for macOS (Apple Silicon / Intel), with persistent storage, web UI, and **MFA TOTP Login**.
